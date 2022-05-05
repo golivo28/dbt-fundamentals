@@ -1,0 +1,16 @@
+version: 2
+
+models:
+    - name: stg_payments
+      description: staging table for payments
+      columns:
+        - name: payment_id
+          tests:
+            - unique
+            - not_null
+        - name: order_id
+          tests:
+            - not_null
+            - relationships:
+                 to: ref('stg_orders')
+                 field: order_id
